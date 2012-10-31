@@ -1,0 +1,15 @@
+module load GCC/4.7.1
+export PATH=/homec/deep/deep31/shared/mcxx/bin:$PATH
+export  LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/homec/deep/deep31/shared/nanox/usr/local/lib/performance
+
+# compiling c
+mcc main.c
+
+# compiling c++
+mcxx main.cxx
+
+# compiling mpi c
+mcc main_MPI.c -O3 -I/opt/parastation/mpi2-intel/include -L/opt/parastation/mpi2-intel/lib -L/opt/parastation/mpi2-intel/lib -Wl,-rpath,/opt/parastation/mpi2-intel/lib -lmpich -lopa -lpthread -L/opt/parastation/lib64 -Wl,-rpath,/opt/parastation/lib64 -Wl,--enable-new-dtags -lpscom -lrt
+
+# compiling mpi c++
+mcxx main_MPI.cxx -O3 -I/opt/parastation/mpi2-intel/include -L/opt/parastation/mpi2-intel/lib -L/opt/parastation/mpi2-intel/lib -Wl,-rpath,/opt/parastation/mpi2-intel/lib -lmpich -lopa -lpthread -L/opt/parastation/lib64 -Wl,-rpath,/opt/parastation/lib64 -Wl,--enable-new-dtags -lpscom -lrt
